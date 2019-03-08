@@ -4,3 +4,10 @@
     20% { margin-bottom: 10px; margin-top:0px; }
     40% { margin-bottom: 0px; margin-top:10px; }
 }
+
+@keyframes disco {
+    0% { background-color: red; }
+    50% { background-color: blue; }
+    100% { background-color: red; }
+    
+}

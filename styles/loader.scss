@@ -4,7 +4,11 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-
+    z-index: 99999;
+    &:not(.first-loaded){
+        background: white;
+    }
+    
     .loader-content{
         position: absolute;
         top: 50%;
@@ -35,7 +39,7 @@
                     animation-delay: 0.3s;
                 }
                 &:nth-of-type(4){
-                    background-color: rgb(122, 114, 114);
+                    background-color: #777777;
                     animation-delay: 0.4s;
                 }
             }

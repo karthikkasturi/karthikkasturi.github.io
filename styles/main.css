@@ -1,40 +1,79 @@
 * {
   box-sizing: border-box; }
 
-body .loader {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px; }
-  body .loader .loader-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-    body .loader .loader-content .loader-icon {
-      min-height: 24px;
-      border: 0px; }
-      body .loader .loader-content .loader-icon .circle {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        border: 0px;
-        display: inline-block;
-        margin-bottom: 0px;
-        margin-top: 10px;
-        animation: jump 2s infinite; }
-        body .loader .loader-content .loader-icon .circle:nth-of-type(1) {
-          background-color: red; }
-        body .loader .loader-content .loader-icon .circle:nth-of-type(2) {
-          background-color: blue;
-          animation-delay: 0.2s; }
-        body .loader .loader-content .loader-icon .circle:nth-of-type(3) {
-          background-color: green;
-          animation-delay: 0.3s; }
-        body .loader .loader-content .loader-icon .circle:nth-of-type(4) {
-          background-color: #7a7272;
-          animation-delay: 0.4s; }
+html, body, body > .content {
+  height: 100%; }
+
+body {
+  margin: 0px; }
+  body .loader {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 99999; }
+    body .loader:not(.first-loaded) {
+      background: white; }
+    body .loader .loader-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      body .loader .loader-content .loader-icon {
+        min-height: 24px;
+        border: 0px; }
+        body .loader .loader-content .loader-icon .circle {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 0px;
+          display: inline-block;
+          margin-bottom: 0px;
+          margin-top: 10px;
+          animation: jump 2s infinite; }
+          body .loader .loader-content .loader-icon .circle:nth-of-type(1) {
+            background-color: red; }
+          body .loader .loader-content .loader-icon .circle:nth-of-type(2) {
+            background-color: blue;
+            animation-delay: 0.2s; }
+          body .loader .loader-content .loader-icon .circle:nth-of-type(3) {
+            background-color: green;
+            animation-delay: 0.3s; }
+          body .loader .loader-content .loader-icon .circle:nth-of-type(4) {
+            background-color: #777777;
+            animation-delay: 0.4s; }
+  body.dark .loader {
+    background: radial-gradient(circle at top right, #475051, #0a0a0a); }
+    body.dark .loader .loader-content .loader-icon .circle:nth-of-type(1) {
+      background-color: white; }
+    body.dark .loader .loader-content .loader-icon .circle:nth-of-type(2) {
+      background-color: whitesmoke; }
+    body.dark .loader .loader-content .loader-icon .circle:nth-of-type(3) {
+      background-color: lightgray; }
+    body.dark .loader .loader-content .loader-icon .circle:nth-of-type(4) {
+      background-color: #777777; }
+  body .production {
+    height: 100%;
+    background: url(https://www.chronicle.com/blogs/linguafranca/files/2017/11/Nothing-to-See-15a34a2fc727c8.jpg) center no-repeat;
+    background-position: contain;
+    animation: disco 1s infinite; }
+  body nav {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    height: 50px;
+    background: #4a4e4d; }
+    body nav .logo {
+      display: inline-block;
+      height: 24px;
+      margin-top: 9px;
+      margin-left: 13px;
+      font-size: 24px;
+      font-family: 'Srisakdi';
+      color: white; }
+  body > .content {
+    padding-top: 50px; }
 
 @keyframes jump {
   0% {
@@ -46,5 +85,12 @@ body .loader {
   40% {
     margin-bottom: 0px;
     margin-top: 10px; } }
+@keyframes disco {
+  0% {
+    background-color: red; }
+  50% {
+    background-color: blue; }
+  100% {
+    background-color: red; } }
 
 /*# sourceMappingURL=main.css.map */
