@@ -17,7 +17,7 @@ body{
         height: 100%;
         background: url(https://www.chronicle.com/blogs/linguafranca/files/2017/11/Nothing-to-See-15a34a2fc727c8.jpg)
             center no-repeat;
-        background-position: contain;
+        background-size: 80%;
         animation: disco 1s infinite;
     }
     @import "nav.scss";
