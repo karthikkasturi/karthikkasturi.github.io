@@ -1,0 +1,45 @@
+.loader {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    .loader-content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        .loader-icon{
+            min-height: 24px;
+            border: 0px;
+            .circle{
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 0px;
+                display: inline-block;
+                margin-bottom: 0px;
+                margin-top: 10px;
+                animation: jump 2s infinite;
+                &:nth-of-type(1){
+                    background-color: red;
+                }
+                &:nth-of-type(2){
+                    background-color: blue;
+                    animation-delay: 0.2s;
+                }
+                &:nth-of-type(3){
+                    background-color: green;
+                    animation-delay: 0.3s;
+                }
+                &:nth-of-type(4){
+                    background-color: rgb(122, 114, 114);
+                    animation-delay: 0.4s;
+                }
+            }
+        }
+
+    }
+}
