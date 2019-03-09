@@ -1,0 +1,49 @@
+.half-section-container{
+    position: relative;
+    padding: 2%;
+    overflow: auto; /*needed so that div stretches with child divs*/
+    .half-section-divider{
+        position:absolute;
+        left:50%;
+        top:10%;
+        bottom:10%;
+        border-left: 1px solid;
+    }
+    .half-section{
+        position: relative;
+        width: 44%;
+        margin: 0;
+        padding: 0;
+        &:first-child{
+            float: left;
+        }
+        &:last-child{
+            float: right;
+        }
+    }
+}
+
+.alignment-container {
+    position: relative;
+}
+.center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    &.bottom, &.top{
+        transform: translate(-50%, 0%);
+    }
+}
+.bottom{
+    position: absolute;
+    bottom: 0;
+    top: unset;
+    transform: none;
+}
+.top{
+    position: absolute;
+    top: 0;
+    bottom: unset;
+    transform: none;
+}

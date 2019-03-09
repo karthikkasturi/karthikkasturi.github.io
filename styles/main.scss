@@ -1,29 +1,31 @@
 * {
     box-sizing: border-box;
+    cursor: default;
+    
 }
 
 html, body, body > .content {
     height: 100%;
+    margin: 0px;
 }
 
+@import "general.scss";
 
 body{
-    margin: 0px;
+    background: #222222;
     @import "loader.scss";
     &.dark{
         @import "loader.dark.scss";
     }
     .production {
-        height: 100%;
+        height: calc(100vh - 50px);
         background: url(https://www.chronicle.com/blogs/linguafranca/files/2017/11/Nothing-to-See-15a34a2fc727c8.jpg)
             center no-repeat;
         background-size: 80%;
         animation: disco 1s infinite;
     }
     @import "nav.scss";
-    & > .content {
-        padding-top: 50px;   
-    }
+    @import "content.scss";
 } 
 
 @import "mobile.scss";

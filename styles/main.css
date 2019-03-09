@@ -1,13 +1,61 @@
 @import url(fonts/Sriskadi.css);
-@import url(fonts/Roboto Condensed.css);
+@import url(fonts/Roboto+Condensed.css);
+@import url(fonts/Dancing+Script.css);
+@import url(fonts/Cinzel.css);
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  cursor: default; }
 
 html, body, body > .content {
-  height: 100%; }
+  height: 100%;
+  margin: 0px; }
+
+.half-section-container {
+  position: relative;
+  padding: 2%;
+  overflow: auto;
+  /*needed so that div stretches with child divs*/ }
+  .half-section-container .half-section-divider {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    bottom: 10%;
+    border-left: 1px solid; }
+  .half-section-container .half-section {
+    position: relative;
+    width: 44%;
+    margin: 0;
+    padding: 0; }
+    .half-section-container .half-section:first-child {
+      float: left; }
+    .half-section-container .half-section:last-child {
+      float: right; }
+
+.alignment-container {
+  position: relative; }
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+  .center.bottom, .center.top {
+    transform: translate(-50%, 0%); }
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  top: unset;
+  transform: none; }
+
+.top {
+  position: absolute;
+  top: 0;
+  bottom: unset;
+  transform: none; }
 
 body {
-  margin: 0px; }
+  background: #222222; }
   body .loader {
     position: fixed;
     top: 0px;
@@ -56,7 +104,7 @@ body {
     body.dark .loader .loader-content .loader-icon .circle:nth-of-type(4) {
       background-color: #777777; }
   body .production {
-    height: 100%;
+    height: calc(100vh - 50px);
     background: url(https://www.chronicle.com/blogs/linguafranca/files/2017/11/Nothing-to-See-15a34a2fc727c8.jpg) center no-repeat;
     background-size: 80%;
     animation: disco 1s infinite; }
@@ -65,7 +113,8 @@ body {
     position: fixed;
     top: 0px;
     height: 50px;
-    background: #4a4e4d; }
+    background: #222222;
+    z-index: 2; }
     body nav .logo {
       position: absolute;
       height: 24px;
@@ -84,22 +133,77 @@ body {
           border: 1px solid white; } }
       body nav .logo .word {
         cursor: default; }
-        body nav .logo .word:hover {
-          font-size: 24px; }
         body nav .logo .word .non-initial {
           display: inline-block;
           width: 60px;
           transition: width 2s; }
+        body nav .logo .word:nth-child(1), body nav .logo .word:hover {
+          color: #ED4337; }
+        body nav .logo .word:hover:nth-child(1) {
+          color: white; }
         @media only screen and (max-width: 600px) {
           body nav .logo .word .non-initial {
             visibility: hidden;
             width: 0px; }
-          body nav .logo .word:hover {
-            font-size: 22px; }
           body nav .logo .word:nth-child(2) {
             margin-left: -4px; } }
-  body > .content {
-    padding-top: 50px; }
+  body .content-container {
+    padding-top: 50px;
+    font-family: 'Roboto Condensed';
+    position: relative; }
+    body .content-container .info-section {
+      position: relative;
+      width: 100%; }
+      body .content-container .info-section.who-am-i {
+        height: calc(100vh - 50px);
+        background: #333333;
+        color: white; }
+        body .content-container .info-section.who-am-i .half-section-container {
+          top: 14vw; }
+          body .content-container .info-section.who-am-i .half-section-container .half-section-divider {
+            transform: rotateZ(10deg);
+            border-color: white;
+            left: 31%; }
+          body .content-container .info-section.who-am-i .half-section-container .half-section {
+            min-height: 150px;
+            width: 66%; }
+            body .content-container .info-section.who-am-i .half-section-container .half-section:nth-child(1) {
+              width: 32%; }
+            body .content-container .info-section.who-am-i .half-section-container .half-section .question-container {
+              font-size: 100px;
+              font-family: 'Cinzel'; }
+            body .content-container .info-section.who-am-i .half-section-container .half-section .text-container {
+              padding: 10px; }
+        body .content-container .info-section.who-am-i .arrow-down-container {
+          height: 200px;
+          text-align: center;
+          width: 100%; }
+          body .content-container .info-section.who-am-i .arrow-down-container .hover-listener {
+            background: #333333; }
+            body .content-container .info-section.who-am-i .arrow-down-container .hover-listener * {
+              cursor: pointer; }
+            body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-helper {
+              opacity: 0;
+              transition: opacity 0.5s linear; }
+            body .content-container .info-section.who-am-i .arrow-down-container .hover-listener:hover .arrow-helper {
+              opacity: 1; }
+            body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down {
+              height: 140px;
+              width: 100%;
+              position: relative;
+              top: 40px;
+              animation: pushDown 2s infinite; }
+              body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down [class^="stroke-"] {
+                position: absolute;
+                width: 50%;
+                border: 1px solid white;
+                top: 23px; }
+              body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down .stroke-left {
+                left: 0;
+                transform: rotateZ(45deg) translateX(19px); }
+              body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down .stroke-right {
+                right: 0;
+                transform: rotateZ(-45deg) translateX(-19px); }
 
 @keyframes jump {
   0% {
@@ -123,5 +227,12 @@ body {
     margin-left: -50px; }
   100% {
     margin-left: inherit; } }
+@keyframes pushDown {
+  0% {
+    top: 40px; }
+  50% {
+    top: 0px; }
+  100% {
+    top: 40px; } }
 
 /*# sourceMappingURL=main.css.map */

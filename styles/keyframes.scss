@@ -16,3 +16,10 @@
     0% { margin-left: -50px; } 
     100% { margin-left: inherit; }
 }
+
+
+@keyframes pushDown {
+    0% {top: 40px;}
+    50% {top: 0px;}
+    100% {top: 40px;}
+}

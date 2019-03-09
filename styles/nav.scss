@@ -3,7 +3,8 @@ nav {
     position: fixed;
     top: 0px;
     height: 50px;
-    background: #4a4e4d;
+    background: #222222;
+    z-index: 2;
     .logo {
         position: absolute;
         height: 24px;
@@ -20,23 +21,24 @@ nav {
             font-weight: normal;
             border: 1px solid white;
         }
+        
         .word {
             cursor: default;
-            &:hover{
-                font-size: 24px;
-            }
             .non-initial{
                 display: inline-block;
                 width: 60px;
                 transition: width 2s;
             }
+            &:nth-child(1), &:hover {
+                color: #ED4337;
+            }
+            &:hover:nth-child(1){
+                color: white;
+            }
             @media only screen and (max-width: 600px) {
                 .non-initial {
                     visibility: hidden;
                     width: 0px;
-                }
-                &:hover{
-                    font-size: 22px;
                 }
                 &:nth-child(2){
                     margin-left: -4px;

@@ -1,0 +1,10 @@
+.content-container {
+    padding-top: 50px;   
+    font-family: 'Roboto Condensed'; 
+    position: relative;
+    .info-section {
+        position: relative;
+        width: 100%;
+        @import "sections/who-am-i.scss";   
+    }
+}
