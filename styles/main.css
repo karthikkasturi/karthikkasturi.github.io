@@ -6,9 +6,9 @@
   box-sizing: border-box;
   cursor: default; }
 
-html, body, body > .content {
-  height: 100%;
-  margin: 0px; }
+html, body {
+  margin: 0px;
+  height: 100%; }
 
 .half-section-container {
   position: relative;
@@ -54,8 +54,27 @@ html, body, body > .content {
   bottom: unset;
   transform: none; }
 
+/* width */
+::-webkit-scrollbar {
+  width: 6px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #333333; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  transition: opacity 1s linear; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  opacity: 1; }
+
 body {
-  background: #222222; }
+  height: calc(100% - 50px);
+  background: #333333; }
   body .loader {
     position: fixed;
     top: 0px;
@@ -130,7 +149,8 @@ body {
         body nav .logo {
           font-family: 'Roboto Condensed';
           font-weight: normal;
-          border: 1px solid white; } }
+          border: 1px solid white;
+          padding: 0px 5px; } }
       body nav .logo .word {
         cursor: default; }
         body nav .logo .word .non-initial {
@@ -148,12 +168,15 @@ body {
           body nav .logo .word:nth-child(2) {
             margin-left: -4px; } }
   body .content-container {
-    padding-top: 50px;
+    margin-top: 50px;
     font-family: 'Roboto Condensed';
-    position: relative; }
+    position: relative;
+    height: 100%;
+    overflow-y: auto; }
     body .content-container .info-section {
       position: relative;
-      width: 100%; }
+      width: 100%;
+      color: white; }
       body .content-container .info-section.who-am-i {
         height: calc(100vh - 50px);
         background: #333333;
@@ -185,6 +208,10 @@ body {
             body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-helper {
               opacity: 0;
               transition: opacity 0.5s linear; }
+              @media only screen and (max-width: 600px) {
+                body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-helper {
+                  opacity: 1;
+                  animation: pulse 2s infinite; } }
             body .content-container .info-section.who-am-i .arrow-down-container .hover-listener:hover .arrow-helper {
               opacity: 1; }
             body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down {
@@ -204,6 +231,14 @@ body {
               body .content-container .info-section.who-am-i .arrow-down-container .hover-listener .arrow-down .stroke-right {
                 right: 0;
                 transform: rotateZ(-45deg) translateX(-19px); }
+      body .content-container .info-section.know-me-better {
+        height: calc(100vh - 50px); }
+        body .content-container .info-section.know-me-better .title {
+          width: 100%;
+          font-size: 40px;
+          line-height: 100px;
+          font-family: 'Srisakdi';
+          text-align: center; }
 
 @keyframes jump {
   0% {
@@ -234,5 +269,10 @@ body {
     top: 0px; }
   100% {
     top: 40px; } }
+@keyframes pulse {
+  0% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -12,8 +12,11 @@ $(document).ready(function () {
         $(".loader").addClass("first-loaded").fadeOut();
     }, 3000);
     $(".hover-listener").click(function(e){
-        $('html, body').animate({
-            scrollTop: $("#section-2").offset().top
+        $('.content-container').animate({
+            scrollTop: document.documentElement.clientHeight - 50
         }, 500, 'linear');
+    });
+    $(".content-container").on('scroll', function(e){
+        console.log(e);
     })
 })
