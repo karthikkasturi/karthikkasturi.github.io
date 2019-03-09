@@ -11,5 +11,9 @@
         color: white;
         @import "sections/who-am-i.scss";
         @import "sections/know-me-better.scss";   
+        &.working-tile{
+            position: relative;
+            height: calc(100vh - 50px);
+        }
     }
 }

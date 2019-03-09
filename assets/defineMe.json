@@ -1,0 +1,23 @@
+{
+    "fullName": "Karthik Kasturi",
+    "bornAndBroughtUp": "Hyderabad",
+    "likes": [
+        "Coding",
+        "Movies",
+        "TV Shows that will ruin him",
+        "Sleeping",
+        "Math",
+        "Debugging 🐞"
+    ],
+    "knownFor": [
+        "Loud Personality",
+        "Coding skills",
+        "Being afraid of a lotta things"
+    ],
+    "dislikes": [
+        "Okra",
+        "Working out",
+        "Debugging own code."
+    ]
+
+}

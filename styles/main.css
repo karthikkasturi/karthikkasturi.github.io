@@ -232,13 +232,18 @@ body {
                 right: 0;
                 transform: rotateZ(-45deg) translateX(-19px); }
       body .content-container .info-section.know-me-better {
-        height: calc(100vh - 50px); }
+        min-height: calc(100vh - 50px); }
         body .content-container .info-section.know-me-better .title {
           width: 100%;
           font-size: 40px;
           line-height: 100px;
           font-family: 'Srisakdi';
           text-align: center; }
+        body .content-container .info-section.know-me-better .content {
+          padding-top: 100px; }
+      body .content-container .info-section.working-tile {
+        position: relative;
+        height: calc(100vh - 50px); }
 
 @keyframes jump {
   0% {
