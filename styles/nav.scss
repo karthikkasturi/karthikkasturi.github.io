@@ -12,8 +12,7 @@ nav {
         left: 13px;
         font-size: 22px;
         line-height: 24px;
-        font-family: 'Srisakdi';
-        font-weight: bold;
+        font-family: 'Alata';
         color: white;
         animation: logoReveal 3s 3s;
         @media only screen and (max-width: 600px) {
@@ -22,7 +21,7 @@ nav {
             border: 1px solid white;
             padding: 0px 5px;
         }
-        
+
         .word {
             cursor: default;
             .non-initial{

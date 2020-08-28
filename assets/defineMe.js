@@ -1,6 +1,6 @@
 var me = {
     fullName: "Karthik Kasturi",
-    bornAndBroughtUp: "Hyderabad, TG, IN 🇮🇳",
+    bornAndBroughtUp: "Hyderabad, TG, 🇮🇳",
     likes: [
         "Coding 💻",
         "Movies 🎥",
@@ -14,10 +14,10 @@ var me = {
         "Loud Personality",
         "Coding skills",
         "Teamwork",
+        "Working out",
     ],
     dislikes: [
         "Okra",
-        "Working out",
         "Debugging own code.",
-    ],
+    ]
 }
