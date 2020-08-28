@@ -253,9 +253,6 @@ body .content-container .info-section.who-am-i .arrow-down-container {
   text-align: center;
   width: 100%;
 }
-body .content-container .info-section.who-am-i .arrow-down-container .hover-listener {
-  background: #333333;
-}
 body .content-container .info-section.who-am-i .arrow-down-container .hover-listener * {
   cursor: pointer;
 }
@@ -300,7 +297,7 @@ body .content-container .info-section.know-me-better .title {
   width: 100%;
   font-size: 40px;
   line-height: 100px;
-  font-family: "Srisakdi";
+  font-family: "Alata";
   text-align: center;
 }
 body .content-container .info-section.know-me-better .content {
