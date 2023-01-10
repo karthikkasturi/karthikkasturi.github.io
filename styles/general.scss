@@ -1,71 +1,35 @@
-.half-section-container{
-    position: relative;
-    padding: 2%;
-    overflow: auto; /*needed so that div stretches with child divs*/
-    .half-section-divider{
-        position:absolute;
-        left:50%;
-        top:10%;
-        bottom:10%;
-        border-left: 1px solid;
-    }
-    .half-section{
-        position: relative;
-        width: 44%;
-        margin: 0;
-        padding: 0;
-        &:first-child{
-            float: left;
+body {
+    margin: 0;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    height: 100vh;
+    width: 70.7vh;
+    display: flex;
+    background-color: white;
+
+    .side {
+        flex: 0 0 30%;
+        background-color: #084d41;
+        .img-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            .img {
+                width: 75%;
+                border-radius: 100%;
+            }
         }
-        &:last-child{
-            float: right;
-        }
     }
-}
 
-.alignment-container {
-    position: relative;
-}
-.center{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    &.bottom, &.top{
-        transform: translate(-50%, 0%);
+    .details {
+        flex: 3;
     }
-}
-.bottom{
-    position: absolute;
-    bottom: 0;
-    top: unset;
-    transform: none;
-}
-.top{
-    position: absolute;
-    top: 0;
-    bottom: unset;
-    transform: none;
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #333333; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-    transition: opacity 1s linear;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-    opacity: 1;
 }
