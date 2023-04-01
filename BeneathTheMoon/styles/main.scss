@@ -1,0 +1,102 @@
+$blue: #062646;
+$blue2: #173553;
+$moonwhite: #fefde8;
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: $blue;
+}
+
+.hills {
+  height: 80vmin;
+  width: 80vmin;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(60%) rotate(45deg);
+  .hill {
+    border-radius: 5%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    &:first-of-type {
+      background-color: $blue2;
+      left: 2vmin;
+      top: -2vmin;
+    }
+    &:nth-of-type(2) {
+      background-color: $blue;
+      left: -10vmin;
+      top: 20vmin;
+    }
+    &:nth-of-type(3) {
+      background-color: $blue;
+      left: 35vmin;
+      top: -10vmin;
+    }
+  }
+}
+
+.star {
+  height: 2px;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  position: absolute;
+  @for $star from 1 to 200 {
+    &:nth-of-type(#{$star}) {
+      $blink: if($star % 2 == 0, blink 2s infinite #{random($limit: 6000)}ms, none);
+      top: #{random($limit: 100)}vh;
+      left: #{random($limit: 100)}vw;
+      animation: $blink;
+    }
+  }
+}
+
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+    }
+    25% {
+        opacity: 25%;
+    }
+    50% {
+        opacity: 100%;
+    }
+}
+
+.mooncenter {
+  bottom: 50vmin;
+  left: 50%;
+  position: absolute;
+  .moon {
+    position: absolute;
+    height: 20vmin;
+    width: 20vmin;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: $moonwhite;
+    border-radius: 100%;
+  }
+  .moonshade {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: $moonwhite;
+    opacity: 0.03;
+    border-radius: 100%;
+    @for $shadeidx from 1 to 9 {
+      $widthmul: 20 + (10 * $shadeidx);
+      &:nth-of-type(#{$shadeidx}) {
+        height: #{$widthmul}vh;
+        width: #{$widthmul}vh;
+      }
+    }
+  }
+}
