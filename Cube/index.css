@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: aliceblue;
+}
+.container .cube {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  transform: rotateX(45deg) rotateY(45deg);
+  transform-style: preserve-3d;
+  animation: cubeRotate 6s linear infinite;
+}
+.container .cube .f {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+.container .cube .f1 {
+  background: #021c1e;
+}
+.container .cube .f2 {
+  background: #004445;
+  transform: rotateY(90deg) translateZ(50px) translateX(50px);
+}
+.container .cube .f3 {
+  background: #2c7873;
+  transform: translateZ(-100px);
+}
+.container .cube .f4 {
+  background: #6fb98f;
+  transform: rotateY(90deg) translateZ(-50px) translateX(50px);
+}
+.container .cube .f5 {
+  background: #98bdc6;
+  transform: rotateX(90deg) translateZ(50px) translateY(-50px);
+}
+.container .cube .f6 {
+  background: #5bc8ac;
+  transform: rotateX(90deg) translateZ(-50px) translateY(-50px);
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+@keyframes cubeRotate {
+  0% {
+    transform: rotateX(45deg) rotateY(45deg);
+  }
+  50% {
+    transform: rotateX(225deg) rotateY(225deg);
+  }
+  100% {
+    transform: rotateX(405deg) rotateY(405deg);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
