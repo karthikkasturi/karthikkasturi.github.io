@@ -6,55 +6,58 @@
   background: aliceblue;
 }
 .container .cube-container {
+  font-family: Helvetica, sans-serif;
   transform-style: preserve-3d;
   position: relative;
   animation: cubeRotate 10s linear infinite;
-  height: 100px;
-  width: 100px;
+  --base-size: 20vmin;
+  height: calc(var(--base-size));
+  width: calc(var(--base-size));
   transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg);
 }
 .container .cube-container .cube {
   position: absolute;
   transform-style: preserve-3d;
-  --size: 50px;
+  --size: var(--base-size);
+  font-size: calc(0.2 * var(--size));
 }
 .container .cube-container .cube .f {
   border: 1px solid rgba(29, 82, 146, 0.6666666667);
-  height: calc(2 * var(--size));
-  width: calc(2 * var(--size));
+  height: var(--size);
+  width: var(--size);
   position: absolute;
   opacity: 0.65;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #3189b4;
-  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.45) inset;
+  box-shadow: 0 0 calc(0.4 * var(--size)) 0 rgba(0, 0, 0, 0.45) inset;
 }
 .container .cube-container .cube.cube-inner {
-  --size: 40px;
-  transform: translateX(10px) translateY(10px);
+  --size: calc(0.8 * var(--base-size));
+  transform: translateX(calc(0.1 * var(--base-size))) translateY(calc(0.1 * var(--base-size)));
 }
 .container .cube-container .cube.cube-inner .f {
   opacity: 1;
   border: none;
 }
 .container .cube-container .cube .f1 {
-  transform: translateZ(var(--size));
+  transform: translateZ(calc(var(--size) / 2));
 }
 .container .cube-container .cube .f2 {
-  transform: rotateY(-90deg) translateZ(var(--size));
+  transform: rotateY(-90deg) translateZ(calc(var(--size) / 2));
 }
 .container .cube-container .cube .f3 {
-  transform: rotateY(180deg) translateZ(var(--size));
+  transform: rotateY(180deg) translateZ(calc(var(--size) / 2));
 }
 .container .cube-container .cube .f4 {
-  transform: rotateY(90deg) translateZ(var(--size));
+  transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
 }
 .container .cube-container .cube .f5 {
-  transform: rotateX(90deg) translateZ(var(--size));
+  transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
 }
 .container .cube-container .cube .f6 {
-  transform: rotateX(-90deg) translateZ(var(--size));
+  transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
 }
 
 body,
