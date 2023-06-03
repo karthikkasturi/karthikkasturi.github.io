@@ -1,0 +1,117 @@
+
+@keyframes roadStart {
+    from {
+      left: 100%;
+    }
+    to {
+      left: -300%;
+    }
+  }
+  
+  @keyframes loading {
+    0% {
+      right: -3rem;
+    }
+  
+    25% {
+      right: -3rem;
+    }
+  
+    50% {
+      right: 50%;
+    }
+  
+    100% {
+      right: 50%;
+    }
+  }
+  
+  
+  @keyframes vanExit {
+      0% {
+          right: 50%;
+      }
+  
+      10% {
+          right: 40%;
+      }
+  
+      100% {
+          right: -3rem;
+      }
+  }
+  
+  
+  @keyframes package {
+    0% {
+      left: -2em;
+    }
+  
+    25% {
+      left: 10%;
+    }
+  
+    50% {
+      left: 10%;
+    }
+  
+    75% {
+      left: 50%;
+      opacity: 1;
+    }
+    100% {
+      left: 50%;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes button {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes prompt {
+    0% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes success {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes door {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(var(--rotation));
+    }
+  
+    75% {
+      transform: rotate(var(--rotation));
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
