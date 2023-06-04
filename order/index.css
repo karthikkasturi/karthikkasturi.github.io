@@ -125,7 +125,7 @@ body {
   border: 0;
   padding: 1em;
   border-radius: 2em;
-  width: 20ch;
+  width: 12em;
   background-color: black;
   color: white;
   height: 3em;
@@ -150,13 +150,17 @@ body {
   --success-delay: calc(var(--van-exit-delay) + var(--van-exit-duration) * 2);
   --success-duration: 500ms;
 }
+.order-btn .prompt {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .order-btn .success {
   opacity: 0;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,10 +171,7 @@ body {
 }
 .order-btn .road-container {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,7 +196,7 @@ body {
   height: 1.5em;
   width: 2em;
   position: absolute;
-  right: -3rem;
+  right: -2em;
   background-color: white;
   border-radius: 0.1em;
 }
