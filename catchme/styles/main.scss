@@ -23,6 +23,8 @@ form {
   padding: 20px;
   width: 100%;
   max-width: 600px;
+  display: grid;
+  
 
   .fieldsets {
     display: grid;
@@ -63,6 +65,61 @@ form {
           border: 1px solid gray;
         }
       }
+  }
+
+  .submit-container {
+    height: 120px;
+    width: 300px;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    .panel {
+      backface-visibility: hidden;
+      @for $i from 0 to 3 {
+        @for $j from 1 to 4 {
+          $count: $i * 3 + $j;
+          &:nth-of-type(#{$count}) {
+            grid-row: $i + 1;
+            grid-column: $j;
+          }
+        }
+      }
+    }
+
+    .button-container {
+      position: relative;
+      backface-visibility: hidden;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+      color: white;
+      --translateX: 0px;
+      --translateY: 0px;
+      --translateZ: 0px;
+      --rotateX: 0deg;
+      --rotateY: 0deg;
+      --rotateZ: 0deg;
+      perspective: 5000px;
+      button {
+        border: none;
+        background-color: #80669d;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        transform: translate(var(--translateX), var(--translateY))
+          rotateX(var(--rotateX)) rotateY(var(--rotateY))
+          rotateZ(var(--rotateZ));
+        transition: transform 150ms ease-out;
+      }
+    }
   }
 
 
@@ -115,58 +172,5 @@ form {
     }
   }
 
-  .submit-container {
-    height: 120px;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: stretch;
-    transform: translateX(-33%);
-    .panel {
-      backface-visibility: hidden;
-      @for $i from 0 to 3 {
-        @for $j from 1 to 4 {
-          $count: $i * 3 + $j;
-          &:nth-of-type(#{$count}) {
-            grid-row: $i + 1;
-            grid-column: $j;
-          }
-        }
-      }
-    }
-
-    .button-container {
-      position: relative;
-      backface-visibility: hidden;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      grid-row: 1 / -1;
-      grid-column: 1 / -1;
-      color: white;
-      --translateX: 0px;
-      --translateY: 0px;
-      --translateZ: 0px;
-      --rotateX: 0deg;
-      --rotateY: 0deg;
-      --rotateZ: 0deg;
-      perspective: 5000px;
-      button {
-        border: none;
-        background-color: #80669d;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 20px;
-        transform: translate(var(--translateX), var(--translateY))
-          rotateX(var(--rotateX)) rotateY(var(--rotateY))
-          rotateZ(var(--rotateZ));
-        transition: transform 150ms ease-out;
-      }
-    }
-  }
+  
 }

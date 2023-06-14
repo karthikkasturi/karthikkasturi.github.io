@@ -23,6 +23,7 @@ form {
   padding: 20px;
   width: 100%;
   max-width: 600px;
+  display: grid;
 }
 form .fieldsets {
   display: grid;
@@ -55,52 +56,10 @@ form .fieldsets fieldset input {
   border-radius: 5px;
   border: 1px solid gray;
 }
-form:invalid {
-  border: 1px solid lightgrey;
-}
-form:invalid .panel {
-  z-index: 10;
-}
-form:invalid .panel:nth-child(2):hover ~ .button-container,
-form:invalid .panel:nth-child(5):hover ~ .button-container {
-  --rotateX: 25deg;
-  --rotateY: 25deg;
-  --translateX: -100px;
-  --translateY: 40px;
-}
-form:invalid .panel:nth-child(7):hover ~ .button-container {
-  --rotateX: -25deg;
-  --rotateY: 45deg;
-  --translateX: 100px;
-  --translateY: 40px;
-}
-form:invalid .panel:nth-child(8):hover ~ .button-container {
-  --rotateX: -25deg;
-  --rotateY: 45deg;
-  --translateX: 100px;
-  --translateY: 40px;
-}
-form:invalid .panel:nth-child(6):hover ~ .button-container {
-  --rotateX: -25deg;
-  --rotateY: 45deg;
-  --translateX: -100px;
-  --translateY: 0px;
-}
-form:invalid .panel:nth-child(9):hover ~ .button-container {
-  --rotateX: -25deg;
-  --rotateY: 45deg;
-  --translateX: -100px;
-  --translateY: -40px;
-}
-form:invalid .panel:nth-child(1):hover ~ .button-container {
-  --rotateX: 25deg;
-  --rotateY: -45deg;
-  --translateX: 100px;
-  --translateY: -40px;
-}
 form .submit-container {
   height: 120px;
   width: 300px;
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +67,6 @@ form .submit-container {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: stretch;
-  transform: translateX(-33%);
 }
 form .submit-container .panel {
   backface-visibility: hidden;
@@ -175,6 +133,49 @@ form .submit-container .button-container button {
   padding: 10px 20px;
   transform: translate(var(--translateX), var(--translateY)) rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
   transition: transform 150ms ease-out;
+}
+form:invalid {
+  border: 1px solid lightgrey;
+}
+form:invalid .panel {
+  z-index: 10;
+}
+form:invalid .panel:nth-child(2):hover ~ .button-container,
+form:invalid .panel:nth-child(5):hover ~ .button-container {
+  --rotateX: 25deg;
+  --rotateY: 25deg;
+  --translateX: -100px;
+  --translateY: 40px;
+}
+form:invalid .panel:nth-child(7):hover ~ .button-container {
+  --rotateX: -25deg;
+  --rotateY: 45deg;
+  --translateX: 100px;
+  --translateY: 40px;
+}
+form:invalid .panel:nth-child(8):hover ~ .button-container {
+  --rotateX: -25deg;
+  --rotateY: 45deg;
+  --translateX: 100px;
+  --translateY: 40px;
+}
+form:invalid .panel:nth-child(6):hover ~ .button-container {
+  --rotateX: -25deg;
+  --rotateY: 45deg;
+  --translateX: -100px;
+  --translateY: 0px;
+}
+form:invalid .panel:nth-child(9):hover ~ .button-container {
+  --rotateX: -25deg;
+  --rotateY: 45deg;
+  --translateX: -100px;
+  --translateY: -40px;
+}
+form:invalid .panel:nth-child(1):hover ~ .button-container {
+  --rotateX: 25deg;
+  --rotateY: -45deg;
+  --translateX: 100px;
+  --translateY: -40px;
 }
 
 /*# sourceMappingURL=index.css.map */
