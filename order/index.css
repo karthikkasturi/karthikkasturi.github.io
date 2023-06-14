@@ -268,7 +268,7 @@ body {
   transform: translateY(-40%);
 }
 .order-btn .road-container .road {
-  background-image: linear-gradient(to right, white 60%, black 0%);
+  background-image: linear-gradient(to right, white 60%, transparent 0%);
   background-position: bottom;
   background-size: 1em 1px;
   background-repeat: repeat-x;

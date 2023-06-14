@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NO Javascript!</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form onsubmit="alert('yayy!'); event.preventDefault();">
+        <div class="fieldsets">
+          <fieldset>
+            <label>
+              <span>Email</span>
+              <input
+                type="email"
+                id="email"
+                pattern="[A-Za-z0-9._%]+@[A-Za-z0-9._%]+\.[A-Za-z]{2,63}$"
+                autofocus
+                required
+                class="field"
+              />
+              <span class="hint"
+                >Email must be of format <b>example@example.com</b></span
+              >
+            </label>
+          </fieldset>
+          <fieldset>
+            <label>
+              <span>Password</span>
+              <input
+                type="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%&]).{8,12}$"
+                required
+                class="field"
+              />
+              <span class="hint"
+                >Password must contain 8-12 letters and contain 1 digit, 1
+                lowercase letter, 1 uppercase letter and one special
+                character(!@#%&)</span
+              >
+            </label>
+          </fieldset>
+        </div>
+        <div class="submit-container">
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
+          <div class="button-container">
+            <button tabindex="-1">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
