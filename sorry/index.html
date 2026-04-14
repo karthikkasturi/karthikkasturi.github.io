@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>I'm Sorry</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="heart">❤️</div>
+      <h1>For Aru, with all my heart</h1>
+      <p>Hey B — I am sorry if you were really hurt but aise na ja offline please dard hota hai.</p>
+      <p>I want to be the person who makes you smile, supports your dreams, and holds you close. I'm here for the little things and the big things, always trying to be more loving and present for you.</p>
+      <div class="actions">
+        <a class="btn" id="promiseBtn" href="#" onclick="return showPromise()">Read my promise</a>
+      </div>
+      <div id="extra" style="display:none;margin-top:16px;text-align:center">
+        <p><strong>My promise:</strong></p>
+        <p> 6 mahine mein shaadi kar lenge</p>
+        <p style="margin-top:8px">1 saal nahi lenge. Fir kabhi ek saal ka baat nahi karunga</p>
+      </div>
+
+      <div class="actions-bottom">
+        <a class="btn" id="surpriseBtn" href="#" onclick="return showSurprise()">Click for a surprise</a>
+      </div>
+
+      <div id="surprise" class="surprise" aria-hidden="true"></div>
+
+      <footer>Made with love</footer>
+    </div>
+  </div>
+  <script>
+    function showPromise(){
+      var extra = document.getElementById('extra');
+      if(extra) extra.style.display = 'block';
+      var btn = document.getElementById('promiseBtn');
+      if(btn) btn.style.display = 'none';
+      return false;
+    }
+
+    function showSurprise(){
+      var surprise = document.getElementById('surprise');
+      if(surprise){
+        surprise.classList.add('show');
+        surprise.setAttribute('aria-hidden','false');
+      }
+      var btn = document.getElementById('surpriseBtn');
+      if(btn){
+        // keep visible but disable interactions while animation runs
+        try{ btn.disabled = true; }catch(e){}
+        btn.setAttribute('aria-disabled','true');
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0.9';
+      }
+
+      // create floating hearts only for surprise (append into .card so they are clipped)
+      var card = document.querySelector('.card');
+      if(!card) return false;
+      for(var i=0;i<12;i++){
+        (function(){
+          var h = document.createElement('span');
+          h.className = 'floating-heart';
+          h.innerText = (Math.random()>.6) ? '💖' : '❤️';
+          h.style.left = (10 + Math.random()*80)+'%';
+          h.style.animationDuration = (2 + Math.random()*2)+'s';
+          h.style.fontSize = (14 + Math.random()*36)+'px';
+          h.style.opacity = (0.7 + Math.random()*0.3);
+          card.appendChild(h);
+          setTimeout(function(){ if(h && h.parentNode) h.parentNode.removeChild(h); }, 4200);
+        })();
+      }
+      return false;
+    }
+    // -- data.json loader and decoder --
+    var __imagesData = null;
+    var __imagesCache = [];
+    fetch('data.json').then(function(r){ return r.json(); }).then(function(j){
+      __imagesData = j || [];
+      // preload and decode into cache using _decodeItem (supports chunked obfuscation)
+      __imagesData.forEach(function(item){
+        try{
+          var url = _decodeItem(item);
+          if(url){ var img = new Image(); img.src = url; /* start preload */ __imagesCache.push({url:url}); }
+        }catch(e){ /* ignore decode errors */ }
+      });
+    }).catch(function(){ __imagesData = null; __imagesCache = []; });
+
+    function _decodeItem(obj){
+      try{
+        // first-layer decode
+        var decoded = atob(obj.ob);
+        // support XOR wrapper: first byte 0xFF, second byte = key, rest = data^key
+        if(decoded && decoded.length > 2 && decoded.charCodeAt(0) === 0xFF){
+          var k = decoded.charCodeAt(1);
+          var rebuilt = [];
+          for(var i=2;i<decoded.length;i++){
+            rebuilt.push(String.fromCharCode(decoded.charCodeAt(i) ^ k));
+          }
+          decoded = rebuilt.join('');
+        }
+        var fullBase64 = null;
+        // support chunked encoding where parts are joined with ':::' and each part is btoa(originalChunk)
+        if(decoded.indexOf(':::') !== -1){
+          var parts = decoded.split(':::');
+          // remove random prefix length from first part
+          parts[0] = parts[0].slice(obj.rlen || 0);
+          var base64parts = parts.map(function(p){ try{ return atob(p); }catch(e){ return ''; } });
+          fullBase64 = base64parts.join('');
+        } else {
+          // fallback: older single-string encoding (random prefix + base64)
+          fullBase64 = decoded.slice(obj.rlen || 0);
+        }
+        if(!fullBase64) return null;
+        // detect mime from the binary signature (magic bytes) after decoding base64
+        var bin = atob(fullBase64);
+        var mime = 'image/jpeg';
+        if(bin && bin.length >= 4){
+          var b0 = bin.charCodeAt(0);
+          var b1 = bin.charCodeAt(1);
+          var b2 = bin.charCodeAt(2);
+          var b3 = bin.charCodeAt(3);
+          if(b0===0xFF && b1===0xD8) mime = 'image/jpeg';
+          else if(b0===0x89 && b1===0x50 && b2===0x4E && b3===0x47) mime = 'image/png';
+          else if(b0===0x47 && b1===0x49 && b2===0x46) mime = 'image/gif';
+          else if(b0===0x52 && b1===0x49 && b2===0x46 && b3===0x46) mime = 'image/webp';
+        }
+        return 'data:' + mime + ';base64,' + fullBase64;
+      }catch(e){ return null; }
+    }
+
+    function getImageData(filename){
+      var found = __imagesCache.find(function(i){ return i.file === filename; });
+      return found ? found.url : null;
+    }
+
+    function createFloatingImages(){
+      if(!__imagesCache || !__imagesCache.length) return;
+      var card = document.querySelector('.card');
+      if(!card) return;
+      var maxTotalMs = 0;
+      var placed = [];
+      var wrapW = card.clientWidth || window.innerWidth;
+      var isMobile = (window.innerWidth || document.documentElement.clientWidth) <= 520;
+      // limit spawn on small screens to avoid overcrowding
+      var maxSpawn = isMobile ? Math.min(4, __imagesCache.length) : __imagesCache.length;
+      // pick indices to spawn (take first maxSpawn of cache)
+      var spawnList = __imagesCache.slice(0, maxSpawn);
+      spawnList.forEach(function(it, idx){
+        (function(item){
+          var el = document.createElement('img');
+          el.className = 'floating-img';
+          el.src = item.url;
+          // choose size: responsive on mobile (fraction of wrap width), otherwise px
+          var size;
+          if(isMobile){
+            var minFrac = 0.18; // 18% of card width
+            var maxFrac = 0.32; // up to ~32%
+            var frac = minFrac + Math.random()*(maxFrac - minFrac);
+            size = Math.round(wrapW * frac);
+          } else {
+            size = 80 + Math.random()*200; // px
+          }
+          el.style.width = Math.round(size) + 'px';
+          // enforce max width so inline width doesn't overflow on small screens
+          el.style.maxWidth = '20vw';
+          // try to find a non-overlapping left position in pixels
+          var maxAttempts = isMobile ? 30 : 18;
+          var leftPx = 10;
+          for(var attempt=0; attempt<maxAttempts; attempt++){
+            var candidate = Math.random() * Math.max(0, (wrapW - size - 20)) + 10; // 10px margin
+            var ok = true;
+            for(var p=0;p<placed.length;p++){
+              var other = placed[p];
+              var minGap = 18 + (size + other.size) / 2; // ensure breathing room
+              if(Math.abs(candidate - other.left) < minGap){ ok = false; break; }
+            }
+            if(ok){ leftPx = candidate; break; }
+            leftPx = candidate;
+          }
+          placed.push({left:leftPx, size:size});
+          // convert px to percent for CSS left
+          var leftPercent = Math.max(2, Math.min(94, (leftPx / wrapW) * 100));
+          el.style.left = leftPercent + '%';
+          // pick a variant animation
+          var variants = ['variant-left','variant-right','variant-swirl','variant-zig'];
+          var v = variants[Math.floor(Math.random()*variants.length)];
+          el.classList.add(v);
+          // fixed 10s duration, small random delay to stagger
+          var delay = Math.random()*0.8; // seconds
+          el.style.animationDuration = '10s';
+          el.style.animationDelay = delay + 's';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+          card.appendChild(el);
+          // remove after animation + delay + small buffer
+          var totalMs = Math.round(10000 + delay*1000 + 200);
+          if(totalMs > maxTotalMs) maxTotalMs = totalMs;
+          setTimeout(function(){ if(el && el.parentNode) el.parentNode.removeChild(el); }, totalMs);
+        })(it);
+      });
+      return maxTotalMs;
+    }
+
+    function createBlinkingHearts(count, durationMs){
+      if(!count || count<=0) count = 3;
+      var card = document.querySelector('.card');
+      if(!card) return;
+      var hearts = [];
+      // spread positions evenly across the card area
+      var wrapW = card.clientWidth || window.innerWidth;
+      for(var i=0;i<count;i++){
+        var s = document.createElement('span');
+        s.className = 'blinking-heart';
+        s.innerText = (Math.random()>.5) ? '💖' : '❤️';
+        // size variation
+        var fs = Math.round(20 + Math.random()*28);
+        s.style.fontSize = fs + 'px';
+        // distribute across center area (20% - 80%) with a small jitter
+        var pct = 20 + (i * (60 / Math.max(1, count-1))) + (Math.random()*6 - 3);
+        s.style.left = Math.max(4, Math.min(96, pct)) + '%';
+        s.style.opacity = 0.9;
+        card.appendChild(s);
+        hearts.push(s);
+      }
+      // remove after durationMs (with small buffer)
+      var buf = 600;
+      setTimeout(function(){ hearts.forEach(function(h){ if(h && h.parentNode) h.parentNode.removeChild(h); }); }, Math.max(800, durationMs || 12000) + buf);
+    }
+
+    // show a random image in surprise and float all preloaded images
+    (function(){
+      var origShow = showSurprise;
+      showSurprise = function(){
+        var res = origShow();
+        // spawn floating images for all cached images and show blinking hearts at bottom
+        if(__imagesCache && __imagesCache.length){
+          // create images immediately (they have internal animationDelay)
+          var duration = createFloatingImages() || 11000;
+          // create blinking hearts for duration
+          createBlinkingHearts(3, duration);
+          // re-enable the surprise button after animations finish
+          var btn = document.getElementById('surpriseBtn');
+          setTimeout(function(){
+            if(btn){
+              try{ btn.disabled = false; }catch(e){}
+              btn.removeAttribute('aria-disabled');
+              btn.style.pointerEvents = 'auto';
+              btn.style.opacity = '1';
+            }
+          }, duration + 300);
+        }
+        return res;
+      };
+    })();
+  </script>
+</body>
+</html>
